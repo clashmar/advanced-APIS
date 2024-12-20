@@ -1,11 +1,12 @@
-﻿using advanced_APIS.Services;
+﻿using advanced_APIS.Models;
+using advanced_APIS.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace advanced_APIS.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TeachersController : ControllerBase
+    public class TeachersController : Controller
     {
         private readonly WizardsService _wizardsService;
 
@@ -28,6 +29,18 @@ namespace advanced_APIS.Controllers
             var teacher = _wizardsService.GetTeacherById(id);
             if (teacher == null) { return NotFound($"There is no teacher with the id: {id}."); }
             return Ok(teacher);
+        }
+
+        [HttpPost]
+        public IActionResult AddTeacher(Teacher teacher)
+        {
+            if (string.IsNullOrEmpty(teacher.Name))
+            {
+                return BadRequest("Teacher Name must not be empty.");
+            }
+
+            var addedTeacher = _wizardsService.AddTeacher(teacher);
+            return Created($"{Request.Path.Value}/{addedTeacher.Id}", addedTeacher);
         }
     }
 }

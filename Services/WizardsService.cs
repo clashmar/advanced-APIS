@@ -25,5 +25,10 @@ namespace advanced_APIS.Services
         {
             return _wizardsModel.GetTeacherById(id);
         }
+
+        public Teacher AddTeacher(Teacher teacher)
+        {
+            return _wizardsModel.AddTeacher(teacher);
+        }
     }
 }
