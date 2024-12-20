@@ -1,6 +1,7 @@
 ﻿using advanced_APIS.Models;
 using advanced_APIS.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace advanced_APIS.Controllers
@@ -17,10 +18,11 @@ namespace advanced_APIS.Controllers
         }
 
         [HttpGet]
+        [OutputCache(Duration = 2)]
         public IActionResult GetAllTeachers()
         {
-            var allSpells = _wizardsService.GetTeachers();
-            return Ok(allSpells);
+            var allTeachers = _wizardsService.GetTeachers();
+            return Ok(allTeachers);
         }
 
         [HttpGet("{id}")]

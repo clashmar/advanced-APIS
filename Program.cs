@@ -12,6 +12,8 @@ builder.Services.AddScoped<WizardsModel>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+//builder.Services.AddMemoryCache();
+builder.Services.AddOutputCache();
 
 builder.Services.AddHealthChecks()
     .AddCheck<TeachersHealthCheck>("teachers_file_health_check",
@@ -50,6 +52,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseHealthChecks("/health");
 app.UseRateLimiter();
+app.UseOutputCache();
 //app.MapGet("/spells/randosm", () => Results.Ok("Here is a random spell!"))
 //    .RequireRateLimiting("fixed");
 app.MapGet("/", () => "Hello World!");

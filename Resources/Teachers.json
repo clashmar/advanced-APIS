@@ -44,5 +44,45 @@
       "Waggo Charmus",
       "Puff of Sparkles"
     ]
+  },
+  {
+    "id": 6,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
   }
 ]
