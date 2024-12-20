@@ -5,19 +5,19 @@ namespace advanced_APIS.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SpellsController : ControllerBase
+    public class TeachersController : ControllerBase
     {
         private readonly WizardsService _wizardsService;
 
-        public SpellsController(WizardsService wizardsService)
+        public TeachersController(WizardsService wizardsService)
         {
             _wizardsService = wizardsService;
         }
 
         [HttpGet]
-        public IActionResult GetAllSpells()
+        public IActionResult GetAllTeachers()
         {
-            var allSpells = _wizardsService.GetSpells();
+            var allSpells = _wizardsService.GetTeachers();
             return Ok(allSpells);
         }
     }
