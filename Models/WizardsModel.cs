@@ -17,5 +17,11 @@ namespace advanced_APIS.Models
             List<Teacher> teacherList = JsonSerializer.Deserialize<List<Teacher>>(jsonTeachers) ?? [];
             return teacherList;
         }
+
+        public Teacher? GetTeacherById(int id)
+        {
+            List<Teacher>? teachers = GetAllTeachers() ?? [];
+            return teachers.Find(t => t.Id == id);
+        }
     }
 }
