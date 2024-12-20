@@ -30,5 +30,10 @@ namespace advanced_APIS.Services
         {
             return _wizardsModel.AddTeacher(teacher);
         }
+
+        public Spell GetRandomSpell()
+        {
+            return _wizardsModel.GetRandomSpell();
+        }
     }
 }

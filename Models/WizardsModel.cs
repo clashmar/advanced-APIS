@@ -35,6 +35,17 @@ namespace advanced_APIS.Models
             return teacher;
         }
 
+        public Spell GetRandomSpell()
+        {
+            List<Spell> spells = Deserialize<Spell>(spellsPath);
+
+            Random rnd = new Random();
+
+            int r = rnd.Next(spells.Count);
+
+            return spells[r];
+        }
+
         private void Serialize<T>(string path, List<T> data)
         {
             string jsonText = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
