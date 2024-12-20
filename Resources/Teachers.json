@@ -84,5 +84,55 @@
     "teaches": [
       "string"
     ]
+  },
+  {
+    "id": 10,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "string",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Charlie",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Sam",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Sam",
+    "species": "string",
+    "personality": "string",
+    "rating": 0,
+    "teaches": [
+      "string"
+    ]
   }
 ]

@@ -3,6 +3,7 @@ using advanced_APIS.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OutputCaching;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace advanced_APIS.Controllers
 {
@@ -11,17 +12,31 @@ namespace advanced_APIS.Controllers
     public class TeachersController : Controller
     {
         private readonly WizardsService _wizardsService;
+        private readonly IMemoryCache _cache;
+        private const string ProductCacheKey = "TeachersList";
 
-        public TeachersController(WizardsService wizardsService)
+        public TeachersController(WizardsService wizardsService, IMemoryCache memoryCache)
         {
             _wizardsService = wizardsService;
+            _cache = memoryCache;
         }
 
         [HttpGet]
-        [OutputCache(Duration = 2)]
+        //[OutputCache(Duration = 20)]
         public IActionResult GetAllTeachers()
         {
-            var allTeachers = _wizardsService.GetTeachers();
+            List<Teacher>? allTeachers;
+
+            if(!_cache.TryGetValue(ProductCacheKey, out allTeachers))
+            {
+                allTeachers = _wizardsService.GetTeachers();
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+
+                _cache.Set(ProductCacheKey, allTeachers, cacheEntryOptions);
+
+            }
             return Ok(allTeachers);
         }
 
